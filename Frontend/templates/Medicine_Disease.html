@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .chatbot-description {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .chatbot-container {
+            width: 100%;
+            max-width: 500px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .result-textarea {
+            margin-top: 20px;
+        }
+
+        .cute-bunny {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        textarea {
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chatbot-description">
+        <h1>
+            <!-- Bunny SVG -->
+            <svg class="cute-bunny" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <!-- Bunny face -->
+                <circle cx="50" cy="50" r="30" fill="#FFD700" class="bunny-face"/>
+                <!-- Bunny ears -->
+                <ellipse cx="25" cy="20" rx="8" ry="18" fill="#FFD700" class="bunny-ears"/>
+                <ellipse cx="75" cy="20" rx="8" ry="18" fill="#FFD700" class="bunny-ears"/>
+                <!-- Bunny eyes -->
+                <circle cx="35" cy="40" r="6" fill="black" class="bunny-eyes"/>
+                <circle cx="65" cy="40" r="6" fill="black" class="bunny-eyes"/>
+                <!-- Bunny nose -->
+                <circle cx="50" cy="55" r="4" fill="pink" class="bunny-nose"/>
+                <!-- Bunny mouth -->
+                <path d="M45,60 Q50,65 55,60" fill="transparent" stroke="black" class="bunny-mouth"/>
+                <!-- Bunny cheeks -->
+                <circle cx="30" cy="50" r="4" fill="pink"/>
+                <circle cx="70" cy="50" r="4" fill="pink"/>
+            </svg>
+            Hi, Everyone! Myself CareBunny
+        </h1>
+        <p>I'm your friendly Disease Diet expert! Feel free to ask me about any Disease Diet Plan, and I'll be happy to share all the details in a way that's easy to understand. 💊✨</p>
+    </div>
+
+    <div class="chatbot-container">
+        <form method="POST">
+            <div class="form-group" enctype="multipart/form-data">
+                <label for="user_input" class="form-label">Enter your input:</label>
+                <input type="file" id="file_input" name="file_input" class="form-control" required>
+            </div>
+            <button type="submit" id="callapibtn" class="btn btn-primary w-100">Predict</button>
+        </form>
+
+        {% if api_response and api_response.result %}
+        <div class="result-textarea">
+            <label for="api_result" class="form-label">Result:</label>
+            <textarea id="api_result" class="form-control" rows="20" readonly>{{ api_response.result }}</textarea>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="mt-3 text-danger">
+            <h2>Error:</h2>
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+    <script>
+        const btn=document.getElementById("callapibtn")
+        const input=document.getElementById("file_input")
+        input.addEventListener("keypress",(event)=>{
+            if(event.key==="Enter"){
+                event.preventDefault();
+                btn.click(); 
+            }
+        })
+    </script>
+</body>
+</html>

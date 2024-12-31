@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Health Chatbot</title>
+    <style>
+      /* General body styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        color: #333;
+      }
+
+      /* Header styles */
+      header {
+        background-color: #3b82f6;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+      }
+
+      /* Container for the cute panda animation */
+      .panda-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+        text-align: center;
+      }
+
+      /* Panda animation keyframes */
+      @keyframes panda-animation {
+        0% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(5deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      /* Cute Panda Styles */
+      .cute-panda {
+        animation: panda-animation 2s ease-in-out infinite;
+        width: 250px; /* Large Panda */
+        height: 250px;
+        transform-origin: center;
+      }
+
+      /* Adding more details to the Panda */
+      .panda-face {
+        fill: white;
+        stroke: black;
+        stroke-width: 4;
+      }
+
+      .panda-eyes {
+        fill: black;
+      }
+
+      .panda-nose {
+        fill: #000;
+      }
+
+      .panda-mouth {
+        fill: none;
+        stroke: #000;
+        stroke-width: 2;
+      }
+
+      .panda-ears {
+        fill: black;
+      }
+
+      /* Welcome text style */
+      .welcome-text {
+        font-size: 2rem;
+        margin-top: 20px;
+        color: #333;
+        font-weight: bold;
+      }
+      .service {
+        font-size: 2rem;
+        margin-top: 20px;
+        color: #3b82f6;
+        font-weight: bold;
+      }
+
+      /* Box around the navigation links */
+      .nav-box {
+        border: 2px solid #ccc; /* Border around the box */
+        padding: 20px;
+        width: fit-content;
+        margin: 20px auto;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Navigation styles */
+      nav {
+        background-color: #374151;
+        padding: 15px;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #3b82f6;
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 768px) {
+        header h1 {
+          font-size: 2rem;
+        }
+
+        .welcome-text {
+          font-size: 1.5rem;
+        }
+
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        nav ul li {
+          margin: 10px 0;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        header h1 {
+          font-size: 1.5rem;
+        }
+
+        .panda-container {
+          min-height: 60vh;
+        }
+
+        nav ul li a {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panda-container">
+      <!-- Cute Panda SVG -->
+      <svg class="cute-panda" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <!-- Panda face -->
+        <circle cx="50" cy="50" r="30" class="panda-face"/>
+
+        <!-- Panda ears -->
+        <circle cx="25" cy="20" r="8" class="panda-ears"/>
+        <circle cx="75" cy="20" r="8" class="panda-ears"/>
+
+        <!-- Panda eyes -->
+        <circle cx="35" cy="40" r="6" class="panda-eyes"/>
+        <circle cx="65" cy="40" r="6" class="panda-eyes"/>
+
+        <!-- Panda nose -->
+        <circle cx="50" cy="55" r="4" class="panda-nose"/>
+
+        <!-- Panda mouth -->
+        <path d="M45,60 Q50,65 55,60" class="panda-mouth"/>
+
+        <!-- Panda cheeks (optional) -->
+        <circle cx="30" cy="50" r="4" fill="pink"/>
+        <circle cx="70" cy="50" r="4" fill="pink"/>
+      </svg>
+
+      <p class="welcome-text">Welcome to the Health Chatbot</p>
+      <p class="service">Please Select Any of the Services present below</p>
+    </div>
+
+    <div class="nav-box">
+      <nav>
+        <ul>
+          <li><a href="/medic_usage">Can Tell The Medicine Usage</a></li>
+          <li><a href="/disease">Predict the Disease based on Medicine_Name</a></li>
+          <li><a href="/ddt">Design Diet_Plan for Disease</a></li>
+          <li><a href="/med_org">Give the File of Medicine and Predict the Organ </a></li>
+          <li><a href="/med_dis">Give the File of Medicine and Classify it under Disease</a></li>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>
